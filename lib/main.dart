@@ -32,17 +32,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          style:
+              const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -53,22 +49,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 borderRadius: BorderRadius.circular(5.0),
                 color: Colors.black26,
               ),
-              child: const Center(
-                child: Text(
-                  'Counter Strafing',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              )),
-          Container(
-              margin: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: Colors.black26,
-              ),
-              child: const Center(
-                child: Text(
-                  'Counter Strafing',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              child: Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Strafe()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(50)),
+                  child: const Text(
+                    'Strafing',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
                 ),
               )),
           Container(
@@ -78,14 +73,43 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.black26,
               ),
               child: Center(
-                child: TextButton(
+                child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => CSPage()));
                   },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(50),
+                  ),
                   child: const Text(
                     'Counter Strafing',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
+              )),
+          Container(
+              margin: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5.0),
+                color: Colors.black26,
+              ),
+              child: Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Recoil()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(50)),
+                  child: const Text(
+                    'Recoil',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
                 ),
               ))
@@ -98,8 +122,36 @@ class _MyHomePageState extends State<MyHomePage> {
 class CSPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("data")),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Counter-Strafe Practice'),
+      ),
+      body: const Center(child: Text("data")),
     );
+  }
+}
+
+class Strafe extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Strafe Practice'),
+      ),
+      body: const Center(child: Text("Strafe")),
+    );
+  }
+}
+
+class Recoil extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Recoil Practice'),
+        ),
+        body: const Center(
+          child: Text('recoil'),
+        ));
   }
 }
